@@ -6,14 +6,14 @@
 @layer base {
   :root {
     --background: 240 10% 3.9%; /* Dark Black */
-    --foreground: 210 100% 50%; /* Bright Glowing Blue */
+    --foreground: 217 91% 60%; /* Glowing Blue */
     --card: 240 10% 3.9%;
-    --card-foreground: 210 100% 50%;
+    --card-foreground: 217 91% 60%;
     --popover: 240 10% 3.9%;
-    --popover-foreground: 210 100% 50%;
-    --primary: 210 100% 50%;
+    --popover-foreground: 217 91% 60%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 210 100% 50%;
+    --secondary: 217 91% 60%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 20%;
     --muted-foreground: 240 3.8% 46.1%;
@@ -23,23 +23,23 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 10%;
     --input: 240 5.9% 10%;
-    --ring: 210 100% 50%;
+    --ring: 217 91% 60%;
     --radius: 1rem;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    background-color: #0D1926;  /* Dark Black */
+    background: radial-gradient(circle at center, #0F172A 0%, #020617 100%);
   }
 
   * {
     @apply border-border;
-    color: #1EAEDB;  /* Bright Glowing Blue */
+    color: #3B82F6;  /* Bright Blue */
   }
 }
 
 @layer utilities {
   .glass-morphism {
-    @apply backdrop-blur-xl bg-black/50 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+    @apply backdrop-blur-xl bg-black/30 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
   }
 }
