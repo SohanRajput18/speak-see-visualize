@@ -1,7 +1,12 @@
-
 import React, { createContext, useState, useContext, useCallback } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+
+interface QueryHistoryItem {
+  transcript: string;
+  results: any[] | null;
+  timestamp: Date;
+}
 
 interface VoiceContextType {
   isRecording: boolean;
@@ -10,6 +15,7 @@ interface VoiceContextType {
   stopRecording: () => void;
   isProcessing: boolean;
   queryResults: any[] | null;
+  queryHistory: QueryHistoryItem[];
 }
 
 const VoiceContext = createContext<VoiceContextType | undefined>(undefined);
@@ -27,6 +33,7 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [transcript, setTranscript] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [queryResults, setQueryResults] = useState<any[] | null>(null);
+  const [queryHistory, setQueryHistory] = useState<QueryHistoryItem[]>([]);
 
   let recognition: any = null;
 
@@ -42,6 +49,13 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         });
 
       if (error) throw error;
+
+      // Add to local history
+      setQueryHistory(prev => [{
+        transcript,
+        results,
+        timestamp: new Date()
+      }, ...prev]);
 
       toast({
         title: 'Query saved',
@@ -182,7 +196,8 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         startRecording,
         stopRecording,
         isProcessing,
-        queryResults
+        queryResults,
+        queryHistory
       }}
     >
       {children}
