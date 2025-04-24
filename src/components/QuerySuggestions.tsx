@@ -33,16 +33,7 @@ export function QuerySuggestions() {
     "What were the sales in Asia for last quarter?",
     "Find products with revenue over $300,000",
     "Compare quarterly sales for electronics in North America",
-    "Which regions had declining sales in 2024?",
-    "Show me customer growth trends in Europe",
-    "What's the average order value by product category?",
-    "Compare month-over-month sales performance",
-    "What are the top 5 selling products?",
-    "Show me marketing ROI by channel",
-    "What was our revenue last month?",
-    "How many new customers did we acquire in Q1?",
-    "Which sales reps performed above target?",
-    "Visualize customer retention rates by segment"
+    "Which regions had declining sales in 2024?"
   ];
   
   return (
