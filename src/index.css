@@ -1,16 +1,17 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 223 49% 8%; /* Dark Navy Blue */
+    --background: 240 10% 3.9%; /* Dark Black */
     
-    /* Text Color Definitions with Blue Gradient Palette */
-    --text-main: 199 100% 70%; /* Light Blue: #47B4F1 - Main Text */
-    --text-primary: 210 100% 50%; /* Medium Blue: #0066CC - Primary Text */
-    --text-secondary: 217 71% 45%; /* Deep Blue: #2B579A - Secondary Text */
-    --text-tertiary: 228 59% 27%; /* Dark Blue: #1E2C56 - Tertiary Text */
+    /* Text Color Definitions with Diverse Palette */
+    --text-main: 199 89% 68%; /* Vibrant Cyan: #4ED4F8 - Main Text */
+    --text-primary: 279 58% 68%; /* Soft Magenta: #B76CF8 - Primary Text */
+    --text-secondary: 48 94% 68%; /* Bright Yellow: #F8D34E - Secondary Text */
+    --text-tertiary: 12 88% 62%; /* Warm Orange: #F86C4E - Tertiary Text */
 
     --foreground: var(--text-main);
     --primary: var(--text-primary);
@@ -19,7 +20,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    background: radial-gradient(ellipse at top, #47B4F1 -50%, #1E2C56 100%);
+    background: radial-gradient(circle at center, #0F172A 0%, #020617 100%);
   }
 
   * {
