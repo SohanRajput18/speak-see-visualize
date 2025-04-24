@@ -25,7 +25,7 @@ export function Navbar() {
             to="/"
             className={({ isActive }) => 
               cn("hidden sm:inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "bg-[#9b87f5] text-white" : "hover:bg-white/10 text-[#8E9196]"
+                isActive ? "bg-[#1EAEDB] text-white shadow-[0_0_15px_rgba(30,174,219,0.5)]" : "hover:bg-white/10 text-[#8E9196]"
               )
             }
           >
@@ -35,7 +35,7 @@ export function Navbar() {
             to="/results"
             className={({ isActive }) => 
               cn("hidden sm:inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "text-white bg-[#9b87f5]" : "border border-[#6E59A5]/30 text-[#6E59A5] hover:border-[#6E59A5]"
+                isActive ? "text-white bg-[#1EAEDB] shadow-[0_0_15px_rgba(30,174,219,0.5)]" : "border border-[#1EAEDB]/30 text-[#1EAEDB] hover:border-[#1EAEDB]"
               )
             }
           >
@@ -45,7 +45,7 @@ export function Navbar() {
             to="/login"
             className={({ isActive }) => 
               cn("inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "bg-[#9b87f5] text-white" : "bg-[#9b87f5] text-white hover:opacity-80"
+                isActive ? "bg-[#1EAEDB] text-white shadow-[0_0_15px_rgba(30,174,219,0.5)]" : "bg-[#1EAEDB] text-white hover:opacity-80 shadow-[0_0_15px_rgba(30,174,219,0.5)]"
               )
             }
           >
