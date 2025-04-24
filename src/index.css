@@ -7,11 +7,11 @@
   :root {
     --background: 240 10% 3.9%; /* Dark Black */
     
-    /* Text Color Definitions using Purple Palette */
-    --text-main: 269 78% 72%; /* Primary Purple: #9b87f5 */
-    --text-primary: 260 49% 57%; /* Secondary Purple: #7E69AB */
-    --text-secondary: 262 36% 49%; /* Tertiary Purple: #6E59A5 */
-    --text-tertiary: 262 20% 40%; /* Darker Purple Shade */
+    /* Text Color Definitions with Diverse Palette */
+    --text-main: 199 89% 68%; /* Vibrant Cyan: #4ED4F8 - Main Text */
+    --text-primary: 279 58% 68%; /* Soft Magenta: #B76CF8 - Primary Text */
+    --text-secondary: 48 94% 68%; /* Bright Yellow: #F8D34E - Secondary Text */
+    --text-tertiary: 12 88% 62%; /* Warm Orange: #F86C4E - Tertiary Text */
 
     --foreground: var(--text-main);
     --primary: var(--text-primary);
