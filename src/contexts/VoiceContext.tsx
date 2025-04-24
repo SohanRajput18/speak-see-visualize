@@ -21,6 +21,12 @@ export const useVoice = () => {
   return context;
 };
 
+// Add types for the Web Speech API
+interface Window {
+  webkitSpeechRecognition?: any;
+  SpeechRecognition?: any;
+}
+
 // Mock data for visualization
 const mockResults = [
   { region: 'North America', revenue: 450000 },
@@ -44,7 +50,7 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Check if browser supports speech recognition
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
       // Use the actual Web Speech API if available
-      const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
       recognition = new SpeechRecognition();
       recognition.lang = 'en-US';
       recognition.continuous = true;
@@ -94,10 +100,10 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Set a sample transcript for demonstration
     const sampleQueries = [
       'Show me total revenue by region',
-      'What are the top-selling products in Asia?',
-      'Compare laptop sales across all regions',
-      'Which category generated the most revenue in January?',
-      'Show me sales trends for smartphones'
+      'What were the sales in Asia for last quarter?',
+      'Find products with revenue over $300,000',
+      'Compare quarterly sales for electronics in North America',
+      'Which regions had declining sales in 2024?'
     ];
     const randomQuery = sampleQueries[Math.floor(Math.random() * sampleQueries.length)];
     setTranscript(randomQuery);
@@ -123,13 +129,46 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const processQuery = (query: string) => {
     setIsProcessing(true);
     
+    // In a real implementation, this would send the query to the backend
+    // where it would be converted to SQL and executed against a PostgreSQL database
+    console.log(`Converting query to SQL: "${query}"`);
+    
+    // Example of what would happen on the backend:
+    let sqlQuery = "";
+    let results = null;
+    
+    // Simple mock SQL generation based on common query patterns
+    if (query.toLowerCase().includes("revenue by region")) {
+      sqlQuery = "SELECT region, SUM(revenue) as revenue FROM sales GROUP BY region ORDER BY revenue DESC";
+      results = mockResults;
+    } 
+    else if (query.toLowerCase().includes("asia")) {
+      sqlQuery = "SELECT * FROM sales WHERE region = 'Asia'";
+      results = mockResults.filter(item => item.region === 'Asia');
+    }
+    else if (query.toLowerCase().includes("over")) {
+      sqlQuery = "SELECT * FROM sales WHERE revenue > 300000";
+      results = mockResults.filter(item => item.revenue > 300000);
+    }
+    else if (query.toLowerCase().includes("north america")) {
+      sqlQuery = "SELECT * FROM sales WHERE region = 'North America'";
+      results = mockResults.filter(item => item.region === 'North America');
+    }
+    else {
+      // Default fallback
+      sqlQuery = "SELECT region, SUM(revenue) as revenue FROM sales GROUP BY region";
+      results = mockResults;
+    }
+    
+    console.log(`Generated SQL: ${sqlQuery}`);
+    
     // Simulate API call delay
     setTimeout(() => {
       setIsProcessing(false);
-      setQueryResults(mockResults);
+      setQueryResults(results);
       toast({
         title: 'Query processed',
-        description: `Successfully processed: "${query}"`,
+        description: `Successfully processed: "${query}" into SQL: "${sqlQuery}"`,
       });
       
       // Update the URL to navigate to results page

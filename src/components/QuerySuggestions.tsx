@@ -27,16 +27,16 @@ const Suggestion = ({ query }: SuggestionProps) => {
 export function QuerySuggestions() {
   const suggestions = [
     "Show me total revenue by region",
-    "What are the top-selling products in Asia?",
-    "Compare laptop sales across all regions",
-    "Which category generated the most revenue in January?",
-    "Show me sales trends for smartphones"
+    "What were the sales in Asia for last quarter?",
+    "Find products with revenue over $300,000",
+    "Compare quarterly sales for electronics in North America",
+    "Which regions had declining sales in 2024?"
   ];
   
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="text-center mb-3 text-sm text-gray-500">
-        Try asking
+        Try asking these database queries
       </div>
       <div className="flex flex-wrap gap-2 justify-center">
         {suggestions.map((query, index) => (
