@@ -6,25 +6,16 @@
 @layer base {
   :root {
     --background: 240 10% 3.9%; /* Dark Black */
-    --foreground: 217 91% 60%; /* Glowing Blue */
-    --card: 240 10% 3.9%;
-    --card-foreground: 217 91% 60%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 217 91% 60%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 217 91% 60%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 20%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 20%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 10%;
-    --input: 240 5.9% 10%;
-    --ring: 217 91% 60%;
-    --radius: 1rem;
+    
+    /* Text Color Definitions */
+    --text-main: 217 91% 60%; /* Bright Glowing Blue - Main Text */
+    --text-primary: 217 91% 75%; /* Slightly Lighter Blue - Primary Text */
+    --text-secondary: 217 91% 50%; /* Slightly Darker Blue - Secondary Text */
+    --text-tertiary: 217 91% 40%; /* Even Darker Blue - Tertiary Text */
+
+    --foreground: var(--text-main);
+    --primary: var(--text-primary);
+    --secondary: var(--text-secondary);
   }
 
   body {
@@ -34,11 +25,24 @@
 
   * {
     @apply border-border;
-    color: #3B82F6;  /* Bright Blue */
+    color: hsl(var(--text-main));
   }
 }
 
 @layer utilities {
+  .text-main {
+    color: hsl(var(--text-main));
+  }
+  .text-primary {
+    color: hsl(var(--text-primary));
+  }
+  .text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+  .text-tertiary {
+    color: hsl(var(--text-tertiary));
+  }
+
   .glass-morphism {
     @apply backdrop-blur-xl bg-black/30 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
   }
