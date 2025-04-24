@@ -72,6 +72,12 @@ export default {
           primary: 'hsl(var(--text-primary))',
           secondary: 'hsl(var(--text-secondary))',
           tertiary: 'hsl(var(--text-tertiary))'
+        },
+        'brand': {
+          'light-blue': '#47B4F1',
+          'medium-blue': '#0066CC',
+          'deep-blue': '#2B579A',
+          'dark-blue': '#1E2C56'
         }
       },
       borderRadius: {
