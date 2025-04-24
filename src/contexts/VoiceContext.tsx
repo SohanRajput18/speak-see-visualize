@@ -30,17 +30,23 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   let recognition: any = null;
 
-  const saveQueryToDatabase = async (transcript: string, results: any[] | null) => {
+  const saveQueryToDatabase = async (transcript: string, results: any[] | null, sqlQuery: string) => {
     try {
       const { error } = await supabase
         .from('voice_queries')
         .insert({
           transcript,
           results,
+          sql_query: sqlQuery,
           user_id: (await supabase.auth.getSession()).data.session?.user?.id
         });
 
       if (error) throw error;
+
+      toast({
+        title: 'Query saved',
+        description: 'Your voice query has been saved successfully',
+      });
     } catch (error) {
       console.error('Error saving query:', error);
       toast({
@@ -144,7 +150,8 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       ];
     }
     
-    await saveQueryToDatabase(query, results);
+    // Save query and results to database
+    await saveQueryToDatabase(query, results, sqlQuery);
     
     setTimeout(() => {
       setIsProcessing(false);
