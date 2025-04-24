@@ -1,3 +1,4 @@
+
 import { VoiceInput } from "@/components/VoiceInput";
 import { QuerySuggestions } from "@/components/QuerySuggestions";
 
@@ -5,7 +6,7 @@ const Index = () => {
   return (
     <div className="container max-w-5xl mx-auto pt-12 pb-16 px-4">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-[#1EAEDB] glow mb-4">Voice to Visual Insight</h1>
+        <h1 className="text-4xl font-bold text-[#1EAEDB] mb-4 [text-shadow:_0_0_15px_rgba(30,174,219,0.5)]">Voice to Visual <span className="text-[#1EAEDB] [text-shadow:_0_0_15px_rgba(30,174,219,0.5)]">Insight</span></h1>
         <p className="text-xl text-[#8E9196] mb-6">Speak your data queries and get instant visualizations</p>
         <p className="text-md text-[#8A898C] mb-10">Your voice is converted to SQL queries that search the database</p>
         
