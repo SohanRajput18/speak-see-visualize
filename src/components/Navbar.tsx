@@ -16,7 +16,7 @@ export function Navbar() {
                 <line x1="12" x2="12" y1="19" y2="22"></line>
               </svg>
             </div>
-            <span className="hidden sm:inline-block text-xl">Voice-to-<span className="text-accent">Visualization</span></span>
+            <span className="hidden sm:inline-block text-xl text-[#403E43]">Voice-to-<span className="text-[#9b87f5]">Visualization</span></span>
           </NavLink>
         </div>
 
@@ -25,7 +25,7 @@ export function Navbar() {
             to="/"
             className={({ isActive }) => 
               cn("hidden sm:inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "bg-accent text-white" : "hover:bg-white/10"
+                isActive ? "bg-[#9b87f5] text-white" : "hover:bg-white/10 text-[#8E9196]"
               )
             }
           >
@@ -35,7 +35,7 @@ export function Navbar() {
             to="/results"
             className={({ isActive }) => 
               cn("hidden sm:inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "text-white bg-accent" : "border border-accent/30 text-accent hover:border-accent"
+                isActive ? "text-white bg-[#9b87f5]" : "border border-[#6E59A5]/30 text-[#6E59A5] hover:border-[#6E59A5]"
               )
             }
           >
@@ -45,7 +45,7 @@ export function Navbar() {
             to="/login"
             className={({ isActive }) => 
               cn("inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "bg-accent text-white" : "bg-accent text-white hover:bg-accent/80"
+                isActive ? "bg-[#9b87f5] text-white" : "bg-[#9b87f5] text-white hover:opacity-80"
               )
             }
           >
