@@ -9,17 +9,15 @@ const Suggestion = ({ query }: SuggestionProps) => {
   const navigate = useNavigate();
   
   const handleClick = () => {
-    // In a real app, we would process this query
-    // For now, just navigate to results
     navigate('/results');
   };
   
   return (
     <button
       onClick={handleClick}
-      className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-full 
-      hover:bg-brand-light-purple hover:border-brand-purple 
-      text-[#221F26] hover:text-[#7E69AB] 
+      className="px-4 py-2 text-sm bg-black/30 border border-[#1EAEDB]/20 rounded-full 
+      hover:bg-[#1EAEDB]/10 hover:border-[#1EAEDB]/50 
+      text-[#1EAEDB] hover:text-[#1EAEDB]/80 
       transition-colors"
     >
       "{query}"
@@ -38,7 +36,7 @@ export function QuerySuggestions() {
   
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="text-center mb-3 text-sm text-[#8E9196]">
+      <div className="text-center mb-3 text-sm text-[#1EAEDB]/60">
         Try asking these database queries
       </div>
       <div className="flex flex-wrap gap-2 justify-center">
