@@ -36,7 +36,7 @@ export function VoiceInput() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Click the microphone and ask a question..."
-            className="w-full bg-white rounded-full px-6 py-3 pr-16 border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
+            className="w-full bg-white rounded-full px-6 py-3 pr-16 border border-gray-200 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
             disabled={isRecording || isProcessing}
           />
           <div className="absolute right-2">
@@ -67,3 +67,4 @@ export function VoiceInput() {
     </div>
   );
 }
+

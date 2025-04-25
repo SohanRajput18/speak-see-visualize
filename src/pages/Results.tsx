@@ -9,7 +9,6 @@ const Results = () => {
   const { queryResults, transcript, isProcessing } = useVoice();
   const location = useLocation();
   
-  // Check if we have a transcript from the location state (from history click)
   const displayTranscript = location.state?.transcript || transcript;
   
   const hasResults = queryResults && queryResults.length > 0;
@@ -40,16 +39,16 @@ const Results = () => {
       </div>
       
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-[#9b87f5]">
+        <h2 className="text-xl font-semibold text-black dark:text-white">
           {displayTranscript ? (
-            <>Results for: <span className="text-[#6E59A5]">"{displayTranscript}"</span></>
+            <>Results for: <span className="text-black dark:text-white">{`"${displayTranscript}"`}</span></>
           ) : (
             'Sample Results'
           )}
         </h2>
         
         {displayTranscript && (
-          <p className="text-sm text-[#8E9196] mt-1">
+          <p className="text-sm text-black/70 dark:text-white/70 mt-1">
             Your voice query was converted to a PostgreSQL query and executed against the database.
           </p>
         )}
@@ -61,7 +60,7 @@ const Results = () => {
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-solid border-[#9b87f5] border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
               <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
             </div>
-            <p className="mt-4 text-[#8A898C]">Converting your voice query to SQL and processing...</p>
+            <p className="mt-4 text-black dark:text-white">Converting your voice query to SQL and processing...</p>
           </div>
         </div>
       ) : hasResults ? (
@@ -75,8 +74,8 @@ const Results = () => {
       ) : (
         <div className="bg-brand-light-purple/50 rounded-2xl p-8 mt-12">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-semibold text-[#6E59A5]">No Data to Visualize</h2>
-            <p className="text-[#403E43] mt-2">Use the voice input above to ask a question about the data</p>
+            <h2 className="text-2xl font-semibold text-black dark:text-white">No Data to Visualize</h2>
+            <p className="text-black/70 dark:text-white/70 mt-2">Use the voice input above to ask a question about the data</p>
           </div>
         </div>
       )}
@@ -85,3 +84,4 @@ const Results = () => {
 };
 
 export default Results;
+
