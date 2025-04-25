@@ -8,7 +8,6 @@ import { Layout } from "./components/Layout";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Results from "./pages/Results";
-import Login from "./pages/Login";
 import { VoiceProvider } from "./contexts/VoiceContext";
 
 const queryClient = new QueryClient();
@@ -24,7 +23,6 @@ const App = () => (
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
               <Route path="results" element={<Results />} />
-              <Route path="login" element={<Login />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

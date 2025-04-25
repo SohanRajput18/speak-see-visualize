@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, useCallback } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -39,35 +40,34 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const saveQueryToDatabase = async (transcript: string, results: any[] | null, sqlQuery: string) => {
     try {
-      const { error } = await supabase
-        .from('voice_queries')
-        .insert({
+      // Only attempt to save to the database if we have transcript text
+      if (transcript && transcript.trim() !== '') {
+        // Add to local history even if database save fails
+        setQueryHistory(prev => [{
           transcript,
           results,
-          sql_query: sqlQuery,
-          user_id: (await supabase.auth.getSession()).data.session?.user?.id
-        });
+          timestamp: new Date()
+        }, ...prev]);
 
-      if (error) throw error;
+        const { error } = await supabase
+          .from('voice_queries')
+          .insert({
+            transcript,
+            results,
+            sql_query: sqlQuery
+          });
 
-      // Add to local history
-      setQueryHistory(prev => [{
-        transcript,
-        results,
-        timestamp: new Date()
-      }, ...prev]);
-
-      toast({
-        title: 'Query saved',
-        description: 'Your voice query has been saved successfully',
-      });
+        if (error) {
+          console.error('Error saving query:', error);
+        } else {
+          toast({
+            title: 'Query saved',
+            description: 'Your voice query has been saved successfully',
+          });
+        }
+      }
     } catch (error) {
       console.error('Error saving query:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to save query history',
-        variant: 'destructive'
-      });
     }
   };
 
@@ -127,6 +127,8 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const processQuery = async (query: string) => {
+    if (!query || query.trim() === '') return;
+    
     setIsProcessing(true);
     
     let sqlQuery = "";
@@ -183,7 +185,7 @@ export const VoiceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       recognition.stop();
     }
     
-    if (transcript) {
+    if (transcript && transcript.trim() !== '') {
       processQuery(transcript);
     }
   }, [transcript]);

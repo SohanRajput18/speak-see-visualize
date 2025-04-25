@@ -14,11 +14,12 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export function History() {
-  const { queryHistory } = useVoice();
+  const { queryHistory, transcript } = useVoice();
   const navigate = useNavigate();
 
   const handleQueryClick = (query: string) => {
-    navigate('/results');
+    // Navigate to the results page and pass the transcript as a state
+    navigate('/results', { state: { transcript: query } });
   };
 
   return (

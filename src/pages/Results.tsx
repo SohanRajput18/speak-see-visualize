@@ -2,25 +2,31 @@
 import { useVoice } from "@/contexts/VoiceContext";
 import { VoiceInput } from "@/components/VoiceInput";
 import { DataVisualization } from "@/components/DataVisualization";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const Results = () => {
   const { queryResults, transcript, isProcessing } = useVoice();
+  const location = useLocation();
+  
+  // Check if we have a transcript from the location state (from history click)
+  const displayTranscript = location.state?.transcript || transcript;
   
   const hasResults = queryResults && queryResults.length > 0;
   
   const getVisualizationTitle = () => {
-    if (!transcript) return "Sample Results";
+    if (!displayTranscript) return "Sample Results";
     
-    if (transcript.toLowerCase().includes("revenue by region")) {
+    if (displayTranscript.toLowerCase().includes("revenue by region")) {
       return "Revenue by Region";
     } 
-    else if (transcript.toLowerCase().includes("asia")) {
+    else if (displayTranscript.toLowerCase().includes("asia")) {
       return "Sales Data for Asia";
     }
-    else if (transcript.toLowerCase().includes("over")) {
+    else if (displayTranscript.toLowerCase().includes("over")) {
       return "High Revenue Products";
     }
-    else if (transcript.toLowerCase().includes("north america")) {
+    else if (displayTranscript.toLowerCase().includes("north america")) {
       return "North America Sales Data";
     }
     
@@ -35,14 +41,14 @@ const Results = () => {
       
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-[#9b87f5]">
-          {transcript ? (
-            <>Results for: <span className="text-[#6E59A5]">"{transcript}"</span></>
+          {displayTranscript ? (
+            <>Results for: <span className="text-[#6E59A5]">"{displayTranscript}"</span></>
           ) : (
             'Sample Results'
           )}
         </h2>
         
-        {transcript && (
+        {displayTranscript && (
           <p className="text-sm text-[#8E9196] mt-1">
             Your voice query was converted to a PostgreSQL query and executed against the database.
           </p>
@@ -63,7 +69,7 @@ const Results = () => {
           <DataVisualization 
             data={queryResults!} 
             title={getVisualizationTitle()} 
-            description={`Data visualization based on SQL query generated from your voice input: "${transcript}"`}
+            description={`Data visualization based on SQL query generated from your voice input: "${displayTranscript}"`}
           />
         </div>
       ) : (

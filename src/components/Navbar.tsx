@@ -41,16 +41,6 @@ export function Navbar() {
           >
             Results
           </NavLink>
-          <NavLink 
-            to="/login"
-            className={({ isActive }) => 
-              cn("inline-flex px-4 py-2 rounded-md font-medium transition-colors", 
-                isActive ? "bg-[#1EAEDB] text-white shadow-[0_0_15px_rgba(30,174,219,0.5)]" : "bg-[#1EAEDB] text-white hover:opacity-80 shadow-[0_0_15px_rgba(30,174,219,0.5)]"
-              )
-            }
-          >
-            Login
-          </NavLink>
         </nav>
       </div>
     </header>

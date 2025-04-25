@@ -23,7 +23,7 @@ export function VoiceInput() {
       stopRecording();
     } else if (inputValue.trim() !== "") {
       // Manually submit text input
-      navigate("/results");
+      navigate("/results", { state: { transcript: inputValue } });
     }
   };
 
